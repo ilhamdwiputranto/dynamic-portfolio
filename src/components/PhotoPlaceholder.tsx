@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Camera, UserCheck } from 'lucide-react';
-import { formatImageUrl } from '@/lib/utils';
+import React, { useState } from "react";
+import { Camera, UserCheck } from "lucide-react";
+import { formatImageUrl } from "@/lib/utils";
 
 interface PhotoPlaceholderProps {
   avatarUrl?: string;
@@ -10,15 +10,13 @@ interface PhotoPlaceholderProps {
 // =========================================================================
 // SILAKAN EDIT / GANTI LINK FOTO PROFIL DI BAWAH INI UNTUK MENGUBAH SECARA HARDCODE
 // =========================================================================
-export const HARDCODED_PHOTO_URL = 'https://lh3.googleusercontent.com/d/1_u8kqgMLUA7aRIvxl4z70gOqWkbyVTSB';
+export const HARDCODED_PHOTO_URL = "https://lh3.googleusercontent.com/d/1_u8kqgMLUA7aRIvxl4z70gOqWkbyVTSB";
 
-export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ avatarUrl, name = 'Ilham Dwi Putranto' }) => {
+export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ avatarUrl, name = "Ilham Dwi Putranto" }) => {
   const formattedUrl = formatImageUrl(avatarUrl);
-  
+
   // Prioritaskan avatarUrl dari spreadsheet jika valid, jika kosong/tidak ada gunakan HARDCODED_PHOTO_URL
-  const initialUrl = (formattedUrl && formattedUrl.startsWith('http')) 
-    ? formattedUrl 
-    : HARDCODED_PHOTO_URL;
+  const initialUrl = formattedUrl && formattedUrl.startsWith("http") ? formattedUrl : HARDCODED_PHOTO_URL;
 
   const [imgSrc, setImgSrc] = useState<string>(initialUrl);
   const [hasError, setHasError] = useState<boolean>(false);
@@ -47,7 +45,11 @@ export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ avatarUrl, n
         ) : (
           <div className="flex flex-col items-center justify-center text-center p-4 text-neutral-400">
             <div className="w-16 h-16 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-2xl border border-blue-500/20 mb-1">
-              {name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+              {name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2)}
             </div>
             <span className="text-[10px] text-neutral-400">Foto Profil</span>
           </div>
@@ -56,7 +58,7 @@ export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ avatarUrl, n
         {/* Change Photo Overlay Guidance */}
         <div className="absolute inset-0 bg-black/80 backdrop-blur-xs flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center p-3">
           <Camera className="w-5 h-5 text-blue-400 mb-1" />
-          <span className="text-[10px] font-medium text-neutral-200 leading-tight">Ubah foto di Sheet 'Profiling' atau hardcode link di PhotoPlaceholder.tsx</span>
+          <span className="text-[10px] font-medium text-neutral-200 leading-tight"> </span>
         </div>
       </div>
 
