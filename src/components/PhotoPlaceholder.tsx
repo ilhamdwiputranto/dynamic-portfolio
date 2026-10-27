@@ -56,10 +56,10 @@ export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ avatarUrl, n
         )}
 
         {/* Change Photo Overlay Guidance */}
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-xs flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center p-3">
+        {/* <div className="absolute inset-0 bg-black/80 backdrop-blur-xs flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center p-3">
           <Camera className="w-5 h-5 text-blue-400 mb-1" />
           <span className="text-[10px] font-medium text-neutral-200 leading-tight"> </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Verified Badge Icon */}
