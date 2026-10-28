@@ -267,7 +267,7 @@ export default function Home({ profile, categories, projects, experiences, educa
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Mengambil hanya 6 proyek pertama */}
-                {projects.slice(0, 6).map((proj) => (
+                {reversedProjects.slice(0, 6).map((proj) => (
                   <div
                     key={proj.id}
                     className="group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-all duration-200 overflow-hidden shadow-xl flex flex-col justify-between">
