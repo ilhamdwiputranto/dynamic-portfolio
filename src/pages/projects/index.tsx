@@ -14,15 +14,14 @@ interface ProjectsGalleryProps {
 
 export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const reversedProjects = [...projects].reverse();
 
-  const filteredProjects = projects.filter(
+  const filteredProjects = reversedProjects.filter(
     (proj) =>
       proj.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       proj.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
       proj.techStack.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase())),
   );
-
-  const reversedProjects = [...projects].reverse();
 
   return (
     <>
