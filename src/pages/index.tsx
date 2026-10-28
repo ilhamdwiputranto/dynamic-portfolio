@@ -9,6 +9,7 @@ import { RatingWidget } from "@/components/RatingWidget";
 import { ContactForm } from "@/components/ContactForm";
 import { getFullPortfolioData } from "@/lib/googleSheets";
 import { PortfolioFullData } from "@/types/portfolio";
+import { FormattedText } from "@/components/FormattedText";
 import {
   ArrowRight,
   Code2,
@@ -165,7 +166,9 @@ export default function Home({ profile, categories, projects, experiences, educa
                   </h3>
 
                   {/* Summary Profil Asli Terhubung Langsung dari Google Sheets */}
-                  <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed whitespace-pre-line font-normal">{profile.summary}</p>
+                  <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed whitespace-pre-line font-normal">
+                    <FormattedText text={profile.summary} />
+                  </p>
 
                   {/* Facts / About Checklist */}
                   {aboutFacts.length > 0 && (
@@ -292,7 +295,9 @@ export default function Home({ profile, categories, projects, experiences, educa
                         <Link href={`/projects/${proj.id}`}>
                           <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors cursor-pointer">{proj.title}</h3>
                         </Link>
-                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3">{proj.description}</p>
+                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3">
+                          <FormattedText text={proj.description} />
+                        </p>
 
                         <div className="flex flex-wrap gap-1.5 pt-2">
                           {proj.techStack.map((tech, idx) => (
@@ -431,7 +436,9 @@ export default function Home({ profile, categories, projects, experiences, educa
                       <p className="text-xs font-medium text-blue-400">
                         {exp.company} • {exp.location}
                       </p>
-                      <p className="text-xs text-neutral-300 leading-relaxed pt-1 whitespace-pre-line">{exp.description}</p>
+                      <p className="text-xs text-neutral-300 leading-relaxed pt-1 whitespace-pre-line">
+                        <FormattedText text={exp.description} />
+                      </p>
                     </div>
                   </div>
                 ))}
