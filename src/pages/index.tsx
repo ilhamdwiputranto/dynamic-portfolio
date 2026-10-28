@@ -45,6 +45,8 @@ export default function Home({ profile, categories, projects, experiences, educa
   const totalSkillModules = categories.reduce((sum, cat) => sum + (cat.itemCount || 0), 0);
 
   const reversedProjects = [...projects].reverse();
+  const reversedExperiences = [...experiences].reverse();
+  const reversedEducations = [...educations].reverse();
 
   return (
     <>
@@ -416,7 +418,7 @@ export default function Home({ profile, categories, projects, experiences, educa
               </div>
 
               <div className="relative border-l border-neutral-800 ml-4 sm:ml-6 space-y-8">
-                {experiences.map((exp) => (
+                {reversedExperiences.map((exp) => (
                   <div key={exp.id} className="relative pl-6 sm:pl-8 group">
                     <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-black border border-blue-400"></div>
                     <div className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-all space-y-2">
@@ -447,7 +449,7 @@ export default function Home({ profile, categories, projects, experiences, educa
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {educations.map((edu) => (
+                {reversedEducations.map((edu) => (
                   <div key={edu.id} className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="p-2 rounded-lg bg-black text-blue-400 border border-neutral-800">

@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { GetServerSideProps } from 'next';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { getCategoryData } from '@/lib/googleSheets';
-import { SkillCategory, SkillItem } from '@/types/portfolio';
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  FileText, 
-  Github, 
-  Search, 
-  Code2
-} from 'lucide-react';
+import React, { useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { GetServerSideProps } from "next";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { getCategoryData } from "@/lib/googleSheets";
+import { SkillCategory, SkillItem } from "@/types/portfolio";
+import { ArrowLeft, ExternalLink, FileText, Github, Search, Code2 } from "lucide-react";
 
 interface SkillDetailPageProps {
   category: SkillCategory | null;
@@ -21,7 +14,7 @@ interface SkillDetailPageProps {
 }
 
 export default function SkillDetailPage({ category, items }: SkillDetailPageProps) {
-  const [filterQuery, setFilterQuery] = useState('');
+  const [filterQuery, setFilterQuery] = useState("");
 
   if (!category) {
     return (
@@ -30,7 +23,9 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
         <div className="text-center py-20 px-6 max-w-md mx-auto space-y-4">
           <h1 className="text-3xl font-bold text-white">Kategori Tidak Ditemukan</h1>
           <p className="text-neutral-400 text-sm">Sheet atau kategori yang Anda cari tidak tersedia di spreadsheet.</p>
-          <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors text-sm">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors text-sm">
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Beranda</span>
           </Link>
@@ -41,9 +36,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
   }
 
   const filteredItems = items.filter(
-    (item) =>
-      item.namaFungsi.toLowerCase().includes(filterQuery.toLowerCase()) ||
-      item.catatan.toLowerCase().includes(filterQuery.toLowerCase())
+    (item) => item.namaFungsi.toLowerCase().includes(filterQuery.toLowerCase()) || item.catatan.toLowerCase().includes(filterQuery.toLowerCase()),
   );
 
   return (
@@ -57,13 +50,11 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
 
         <main className="relative z-10 flex-grow py-12 px-6">
           <div className="max-w-6xl mx-auto space-y-8">
-            
             {/* Header Navigation & Status */}
             <div className="flex items-center justify-between">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800"
-              >
+                className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back to Home</span>
               </Link>
@@ -111,7 +102,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
-                      <th className="py-3.5 px-6 w-1/4">Nama Fungsi / Modul</th>
+                      <th className="py-3.5 px-6 w-1/4">Nama Topik / Modul</th>
                       <th className="py-3.5 px-6 w-1/2">Kesan & Evaluasi</th>
                       <th className="py-3.5 px-6 w-1/4 text-right">Repository GitHub</th>
                     </tr>
@@ -119,20 +110,15 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                   <tbody className="divide-y divide-neutral-800/80 text-xs text-neutral-300">
                     {filteredItems.map((item) => (
                       <tr key={item.id} className="hover:bg-neutral-900/80 transition-colors group">
-                        <td className="py-4 px-6 font-bold text-white group-hover:text-blue-400 transition-colors">
-                          {item.namaFungsi}
-                        </td>
-                        <td className="py-4 px-6 text-neutral-300 leading-relaxed">
-                          {item.catatan}
-                        </td>
+                        <td className="py-4 px-6 font-bold text-white group-hover:text-blue-400 transition-colors">{item.namaFungsi}</td>
+                        <td className="py-4 px-6 text-neutral-300 leading-relaxed whitespace-pre-line">{item.catatan}</td>
                         <td className="py-4 px-6 text-right">
-                          {item.linkGithub && item.linkGithub !== '#' ? (
+                          {item.linkGithub && item.linkGithub !== "#" ? (
                             <a
                               href={item.linkGithub}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black border border-neutral-800 hover:border-neutral-700 text-neutral-200 text-xs font-medium transition-all"
-                            >
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black border border-neutral-800 hover:border-neutral-700 text-neutral-200 text-xs font-medium transition-all">
                               <Github className="w-3.5 h-3.5" />
                               <span>View Code</span>
                               <ExternalLink className="w-3 h-3 text-neutral-500" />
@@ -152,16 +138,13 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 {filteredItems.map((item) => (
                   <div key={item.id} className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
                     <h3 className="font-bold text-white text-sm">{item.namaFungsi}</h3>
-                    <p className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">
-                      {item.catatan}
-                    </p>
-                    {item.linkGithub && item.linkGithub !== '#' && (
+                    <p className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">{item.catatan}</p>
+                    {item.linkGithub && item.linkGithub !== "#" && (
                       <a
                         href={item.linkGithub}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-medium text-blue-400 pt-1"
-                      >
+                        className="inline-flex items-center gap-2 text-xs font-medium text-blue-400 pt-1">
                         <Github className="w-4 h-4" />
                         <span>Lihat Kode di GitHub</span>
                         <ExternalLink className="w-3 h-3" />
@@ -189,7 +172,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.params || {};
 
-  if (typeof slug !== 'string') {
+  if (typeof slug !== "string") {
     return {
       notFound: true,
     };
