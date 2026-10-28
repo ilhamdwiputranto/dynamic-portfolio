@@ -22,6 +22,8 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
       proj.techStack.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
+  const reversedProjects = [...projects].reverse();
+
   return (
     <>
       <Head>

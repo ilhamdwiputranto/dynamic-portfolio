@@ -44,6 +44,8 @@ export default function Home({ profile, categories, projects, experiences, educa
 
   const totalSkillModules = categories.reduce((sum, cat) => sum + (cat.itemCount || 0), 0);
 
+  const reversedProjects = [...projects].reverse();
+
   return (
     <>
       <Head>
