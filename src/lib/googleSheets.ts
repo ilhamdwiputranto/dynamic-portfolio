@@ -546,3 +546,9 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
     };
   }
 }
+
+export async function getProjectById(id: string): Promise<ProjectItem | null> {
+  const { projects } = await getFullPortfolioData();
+  const project = projects.find((p) => p.id === id);
+  return project || null;
+}

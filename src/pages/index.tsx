@@ -269,8 +269,10 @@ export default function Home({ profile, categories, projects, experiences, educa
                     key={proj.id}
                     className="group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-all duration-200 overflow-hidden shadow-xl flex flex-col justify-between">
                     <div className="space-y-4">
-                      {/* Project Image Thumbnail */}
-                      <div className="relative h-48 w-full bg-black overflow-hidden border-b border-neutral-800">
+                      {/* Gambar Proyek dengan Link */}
+                      <Link
+                        href={`/projects/${proj.id}`}
+                        className="block relative h-48 w-full bg-black overflow-hidden border-b border-neutral-800 cursor-pointer">
                         <img
                           src={proj.imageUrl}
                           alt={proj.title}
@@ -279,11 +281,14 @@ export default function Home({ profile, categories, projects, experiences, educa
                         <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/90 border border-neutral-800 text-[10px] font-mono text-blue-400">
                           {proj.status}
                         </div>
-                      </div>
+                      </Link>
 
                       <div className="p-6 space-y-3">
-                        <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">{proj.title}</h3>
-                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3 whitespace-pre-line">{proj.description}</p>
+                        {/* Judul Proyek dengan Link */}
+                        <Link href={`/projects/${proj.id}`}>
+                          <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors cursor-pointer">{proj.title}</h3>
+                        </Link>
+                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3">{proj.description}</p>
 
                         <div className="flex flex-wrap gap-1.5 pt-2">
                           {proj.techStack.map((tech, idx) => (
@@ -297,6 +302,7 @@ export default function Home({ profile, categories, projects, experiences, educa
                       </div>
                     </div>
 
+                    {/* Tombol Aksi Kaki Kartu */}
                     <div className="p-6 pt-0 flex flex-wrap items-center gap-2.5">
                       {proj.demoLink && proj.demoLink !== "#" ? (
                         <a
@@ -320,12 +326,6 @@ export default function Home({ profile, categories, projects, experiences, educa
                           <span>Repository</span>
                           <ExternalLink className="w-3 h-3 text-neutral-500" />
                         </a>
-                      ) : null}
-
-                      {(!proj.demoLink || proj.demoLink === "#") &&
-                      (!proj.githubLink || proj.githubLink === "#") &&
-                      (!proj.link || proj.link === "#") ? (
-                        <span className="w-full block text-center text-xs text-neutral-500 font-mono py-2">Internal Project</span>
                       ) : null}
                     </div>
                   </div>
