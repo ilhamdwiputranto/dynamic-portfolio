@@ -14,6 +14,7 @@ import {
   Code2,
   Github,
   Linkedin,
+  Link2,
   Mail,
   MapPin,
   Download,
@@ -222,15 +223,15 @@ export default function Home({ profile, categories, projects, experiences, educa
                       </a>
                     )}
 
-                    {profile.linkedinUrl && (
+                    {profile.linktreeUrl && (
                       <a
-                        href={profile.linkedinUrl}
+                        href={profile.linktreeUrl}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center justify-between p-3 rounded-xl bg-black border border-neutral-800 hover:border-neutral-700 transition-colors">
                         <span className="flex items-center gap-2">
-                          <Linkedin className="w-4 h-4 text-neutral-300" />
-                          <span>LinkedIn Profile</span>
+                          <Link2 className="w-4 h-4 text-neutral-300" />
+                          <span>Linktree Profile</span>
                         </span>
                         <ExternalLink className="w-3 h-3 text-neutral-500" />
                       </a>

@@ -14,6 +14,7 @@ import {
   Code2,
   Github,
   Linkedin,
+  Link2,
   Mail,
   MapPin,
   Download,
@@ -167,7 +168,7 @@ export default function Home({ profile, categories, projects, experiences, educa
                     <div className="pt-4 border-t border-neutral-800/80 space-y-3">
                       <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
                         <Smile className="w-4 h-4 text-blue-400" />
-                        <span>Fakta Unik & Catatan Personal (Sheet 'About')</span>
+                        <span>Fakta Unik & Catatan Personal</span>
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         {aboutFacts.map((fact, idx) => (
@@ -221,6 +222,20 @@ export default function Home({ profile, categories, projects, experiences, educa
                         <ExternalLink className="w-3 h-3 text-neutral-500" />
                       </a>
                     )}
+
+                    {profile.linktreeUrl && (
+                      <a
+                        href={profile.linktreeUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-black border border-neutral-800 hover:border-neutral-700 transition-colors">
+                        <span className="flex items-center gap-2">
+                          <Link2 className="w-4 h-4 text-neutral-300" />
+                          <span>Linktree Profile</span>
+                        </span>
+                        <ExternalLink className="w-3 h-3 text-neutral-500" />
+                      </a>
+                    )}
                   </div>
 
                   <a
@@ -268,7 +283,7 @@ export default function Home({ profile, categories, projects, experiences, educa
 
                       <div className="p-6 space-y-3">
                         <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">{proj.title}</h3>
-                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3">{proj.description}</p>
+                        <p className="text-xs text-neutral-400 leading-relaxed line-clamp-3 whitespace-pre-line">{proj.description}</p>
 
                         <div className="flex flex-wrap gap-1.5 pt-2">
                           {proj.techStack.map((tech, idx) => (
@@ -362,7 +377,7 @@ export default function Home({ profile, categories, projects, experiences, educa
                             {category.itemCount} Modul
                           </span>
                         </div>
-                        <p className="text-xs text-neutral-400 leading-relaxed max-w-2xl">
+                        <p className="text-xs text-neutral-400 leading-relaxed max-w-2xl whitespace-pre-line">
                           {category.description || `Dokumentasi fungsi & praktik untuk ${category.title}`}
                         </p>
                       </div>
@@ -401,7 +416,7 @@ export default function Home({ profile, categories, projects, experiences, educa
                       <p className="text-xs font-medium text-blue-400">
                         {exp.company} • {exp.location}
                       </p>
-                      <p className="text-xs text-neutral-300 leading-relaxed pt-1">{exp.description}</p>
+                      <p className="text-xs text-neutral-300 leading-relaxed pt-1 whitespace-pre-line">{exp.description}</p>
                     </div>
                   </div>
                 ))}
@@ -429,7 +444,7 @@ export default function Home({ profile, categories, projects, experiences, educa
                     </div>
                     <h3 className="text-base font-bold text-white">{edu.degree}</h3>
                     <p className="text-xs font-medium text-blue-400">{edu.institution}</p>
-                    {edu.description && <p className="text-xs text-neutral-400 leading-relaxed pt-1">{edu.description}</p>}
+                    {edu.description && <p className="text-xs text-neutral-400 leading-relaxed pt-1 whitespace-pre-line">{edu.description}</p>}
                   </div>
                 ))}
               </div>

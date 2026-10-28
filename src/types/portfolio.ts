@@ -22,6 +22,7 @@ export interface ProfilingData {
   email: string;
   githubUrl: string;
   linkedinUrl: string;
+  linktreeUrl: string;
   location: string;
 }
 
@@ -33,7 +34,7 @@ export interface ProjectItem {
   link: string;
   demoLink?: string;
   githubLink?: string;
-  status: 'Production' | 'Completed' | 'In Progress' | string;
+  status: "Production" | "Completed" | "In Progress" | string;
   techStack: string[];
 }
 

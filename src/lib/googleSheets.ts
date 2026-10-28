@@ -259,6 +259,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
     avatarUrl: "https://lh3.googleusercontent.com/d/1_u8kqgMLUA7aRIvxl4z70gOqWkbyVTSB",
     githubUrl: "https://github.com/ilhamdwiputranto",
     linkedinUrl: "https://linkedin.com/in/ilham-dwi-putranto",
+    linktreeUrl: "https://linktr.ee/ilhamdwiputranto",
   };
 
   const defaultProjects: ProjectItem[] = [
@@ -385,6 +386,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
         profile.avatarUrl = formatImageUrl(getVal(["Foto_URL", "foto_url", "Foto", "Avatar", "Image"])) || profile.avatarUrl;
         profile.githubUrl = getVal(["GitHub", "github", "Github", "Link_Github"]) || profile.githubUrl;
         profile.linkedinUrl = getVal(["LinkedIn", "linkedin", "Linkedin", "Link_Linkedin"]) || profile.linkedinUrl;
+        profile.linktreeUrl = getVal(["Linktree", "linktree_link"]) || profile.linktreeUrl;
       }
     }
 
