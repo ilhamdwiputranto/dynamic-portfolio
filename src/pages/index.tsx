@@ -264,12 +264,13 @@ export default function Home({ profile, categories, projects, experiences, educa
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((proj) => (
+                {/* Mengambil hanya 6 proyek pertama */}
+                {projects.slice(0, 6).map((proj) => (
                   <div
                     key={proj.id}
                     className="group rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-all duration-200 overflow-hidden shadow-xl flex flex-col justify-between">
                     <div className="space-y-4">
-                      {/* Gambar Proyek dengan Link */}
+                      {/* Thumbnail Gambar dengan Link */}
                       <Link
                         href={`/projects/${proj.id}`}
                         className="block relative h-48 w-full bg-black overflow-hidden border-b border-neutral-800 cursor-pointer">
@@ -284,7 +285,6 @@ export default function Home({ profile, categories, projects, experiences, educa
                       </Link>
 
                       <div className="p-6 space-y-3">
-                        {/* Judul Proyek dengan Link */}
                         <Link href={`/projects/${proj.id}`}>
                           <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors cursor-pointer">{proj.title}</h3>
                         </Link>
@@ -302,7 +302,6 @@ export default function Home({ profile, categories, projects, experiences, educa
                       </div>
                     </div>
 
-                    {/* Tombol Aksi Kaki Kartu */}
                     <div className="p-6 pt-0 flex flex-wrap items-center gap-2.5">
                       {proj.demoLink && proj.demoLink !== "#" ? (
                         <a
@@ -331,6 +330,18 @@ export default function Home({ profile, categories, projects, experiences, educa
                   </div>
                 ))}
               </div>
+
+              {/* TOMBOL "LIHAT SEMUA PROYEK" */}
+              {projects.length > 6 && (
+                <div className="flex justify-center pt-8">
+                  <Link
+                    href="/projects"
+                    className="px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md group">
+                    <span>Lihat Semua Proyek ({projects.length})</span>
+                    <ArrowRight className="w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              )}
             </div>
           </section>
 
