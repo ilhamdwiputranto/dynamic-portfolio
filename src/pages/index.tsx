@@ -33,7 +33,16 @@ import {
   Globe,
 } from "lucide-react";
 
-export default function Home({ profile, categories, projects, experiences, educations, aboutFacts = [], testimonials = [] }: PortfolioFullData) {
+export default function Home({
+  profile,
+  categories,
+  projects,
+  experiences,
+  educations,
+  aboutFacts = [],
+  testimonials = [],
+  techSkills = [],
+}: PortfolioFullData) {
   const [searchTerm, setSearchTerm] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
 
@@ -49,6 +58,15 @@ export default function Home({ profile, categories, projects, experiences, educa
   const reversedExperiences = [...experiences].reverse();
   const reversedEducations = [...educations].reverse();
 
+  const groupedTechSkills = techSkills.reduce(
+    (acc, item) => {
+      const cat = item.category || "General Skills";
+      if (!acc[cat]) acc[cat] = [];
+      acc[cat].push(item);
+      return acc;
+    },
+    {} as Record<string, typeof techSkills>,
+  );
   return (
     <>
       <Head>
@@ -258,7 +276,46 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 3. SECTION PROJECT SHOWCASE */}
+          {/* 3. SECTION TECH SKILLS SHOWCASE */}
+          <section id="tech-skills" className="py-16 px-6 border-b border-neutral-800/80">
+            <div className="max-w-5xl mx-auto space-y-8">
+              <div className="border-b border-neutral-800/80 pb-6">
+                <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// CORE COMPETENCIES</div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Stack & Key Skills</h2>
+                <p className="text-neutral-400 text-xs sm:text-sm mt-1">
+                  Teknologi dan instrumen pengembangan utama yang terhubung langsung dari Google Sheets.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {Object.entries(groupedTechSkills).map(([categoryName, skills], idx) => (
+                  <div key={idx} className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-4 shadow-xl">
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2 font-mono border-b border-neutral-800/80 pb-3">
+                      <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                      <span>{categoryName}</span>
+                    </h3>
+
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map((skill) => (
+                        <div
+                          key={skill.id}
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black border border-neutral-800 hover:border-neutral-700 transition-colors">
+                          <span className="text-xs font-mono text-neutral-200 font-medium">{skill.name}</span>
+                          {skill.level && (
+                            <span className="px-1.5 py-0.5 rounded bg-neutral-900 text-neutral-400 text-[10px] font-mono border border-neutral-800">
+                              {skill.level}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* 4. SECTION PROJECT SHOWCASE */}
           <section id="projects" className="py-20 px-6 border-b border-neutral-800/80">
             <div className="max-w-6xl mx-auto space-y-10">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-neutral-800/80 pb-6">
@@ -354,7 +411,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 4. SECTION TECH SKILLS & DOKUMENTASI MODUL */}
+          {/* 5. SECTION TECH SKILLS & DOKUMENTASI MODUL */}
           <section id="skills" className="py-20 px-6 border-b border-neutral-800/80">
             <div className="max-w-5xl mx-auto space-y-10">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-neutral-800/80 pb-6">
@@ -413,7 +470,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 5. SECTION PENGALAMAN KERJA (EXPERIENCE) */}
+          {/* 6. SECTION PENGALAMAN KERJA (EXPERIENCE) */}
           <section id="experience" className="py-20 px-6 border-b border-neutral-800/80">
             <div className="max-w-5xl mx-auto space-y-10">
               <div className="border-b border-neutral-800/80 pb-6">
@@ -446,7 +503,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 6. SECTION PENDIDIKAN (EDUCATION) */}
+          {/* 7. SECTION PENDIDIKAN (EDUCATION) */}
           <section id="education" className="py-20 px-6 border-b border-neutral-800/80">
             <div className="max-w-5xl mx-auto space-y-10">
               <div className="border-b border-neutral-800/80 pb-6">
@@ -473,7 +530,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 7. SECTION TESTIMONIALS */}
+          {/* 8. SECTION TESTIMONIALS */}
           <section id="testimonials" className="py-20 px-6 border-b border-neutral-800/80">
             <div className="max-w-5xl mx-auto space-y-10">
               <div className="border-b border-neutral-800/80 pb-6">
@@ -508,7 +565,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 8. SECTION AI CALLOUT CARD */}
+          {/* 9. SECTION AI CALLOUT CARD */}
           <section id="ai-assistant" className="py-16 px-6 border-b border-neutral-800/80 bg-black/60">
             <div className="max-w-3xl mx-auto p-6 sm:p-8 rounded-2xl bg-neutral-900/80 border border-neutral-800/80 space-y-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="space-y-1">
@@ -532,7 +589,7 @@ export default function Home({ profile, categories, projects, experiences, educa
             </div>
           </section>
 
-          {/* 9. SECTION FORM KONTAK */}
+          {/* 10. SECTION FORM KONTAK */}
           <section id="contact" className="py-20 px-6">
             <div className="max-w-3xl mx-auto">
               <ContactForm email={profile.email} />

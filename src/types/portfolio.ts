@@ -62,7 +62,12 @@ export interface TestimonialItem {
   kesan: string;
   avatarUrl?: string;
 }
-
+export interface TechSkillItem {
+  id: string;
+  category: string;
+  name: string;
+  level?: string;
+}
 export interface PortfolioFullData {
   profile: ProfilingData;
   categories: SkillCategory[];
@@ -71,6 +76,7 @@ export interface PortfolioFullData {
   educations: EducationItem[];
   aboutFacts: string[];
   testimonials: TestimonialItem[];
+  techSkills?: TechSkillItem[];
 }
 
 export type UserProfile = ProfilingData;

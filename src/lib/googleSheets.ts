@@ -45,6 +45,7 @@ import {
   EducationItem,
   TestimonialItem,
   PortfolioFullData,
+  TechSkillItem,
 } from "@/types/portfolio";
 
 const MOCK_CATEGORIES: SkillCategory[] = [
@@ -262,6 +263,19 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
     linktreeUrl: "https://linktr.ee/ilhamdwiputranto",
   };
 
+  const defaultTechSkills: TechSkillItem[] = [
+    { id: "1", category: "Frontend Development", name: "Next.js 14", level: "Advanced" },
+    { id: "2", category: "Frontend Development", name: "React.js", level: "Advanced" },
+    { id: "3", category: "Frontend Development", name: "TypeScript", level: "Advanced" },
+    { id: "4", category: "Frontend Development", name: "Tailwind CSS", level: "Advanced" },
+    { id: "5", category: "Backend & CMS", name: "Google Sheets API", level: "Advanced" },
+    { id: "6", category: "Backend & CMS", name: "Node.js", level: "Intermediate" },
+    { id: "7", category: "AI & Automation", name: "Gemini AI Studio", level: "Advanced" },
+    { id: "8", category: "AI & Automation", name: "Python", level: "Intermediate" },
+    { id: "9", category: "Tools & Ecosystem", name: "Git & GitHub", level: "Advanced" },
+    { id: "10", category: "Tools & Ecosystem", name: "Vercel", level: "Advanced" },
+  ];
+
   const defaultProjects: ProjectItem[] = [
     {
       id: "1",
@@ -387,6 +401,29 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
         profile.githubUrl = getVal(["GitHub", "github", "Github", "Link_Github"]) || profile.githubUrl;
         profile.linkedinUrl = getVal(["LinkedIn", "linkedin", "Linkedin", "Link_Linkedin"]) || profile.linkedinUrl;
         profile.linktreeUrl = getVal(["Linktree", "linktree_link"]) || profile.linktreeUrl;
+      }
+    }
+
+    let techSkills = [...defaultTechSkills];
+    const techSkillSheet = findSheet(["skills", "tech_skills", "techskills", "keahlian", "stack"]);
+    if (techSkillSheet) {
+      const rows = await techSkillSheet.getRows();
+      if (rows.length > 0) {
+        techSkills = rows.map((row, idx) => {
+          const getVal = (keys: string[]) => {
+            for (const k of keys) {
+              const val = row.get(k);
+              if (val !== undefined && val !== null && String(val).trim() !== "") return String(val).trim();
+            }
+            return "";
+          };
+          return {
+            id: String(idx + 1),
+            category: getVal(["Category", "category", "Kategori", "kategori", "Group"]) || "General Skills",
+            name: getVal(["Skill", "skill", "Nama", "nama", "Name", "Title"]) || `Skill #${idx + 1}`,
+            level: getVal(["Level", "level", "Tingkat", "Pengalaman"]) || "",
+          };
+        });
       }
     }
 
@@ -532,6 +569,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
       educations,
       aboutFacts,
       testimonials,
+      techSkills,
     };
   } catch (err) {
     console.error("Error fetching full portfolio data:", err);
