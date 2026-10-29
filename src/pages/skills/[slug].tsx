@@ -6,7 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getCategoryData } from "@/lib/googleSheets";
 import { SkillCategory, SkillItem } from "@/types/portfolio";
-import { ArrowLeft, ExternalLink, FileText, Github, Search, Code2 } from "lucide-react";
+import { FormattedText } from "@/components/FormattedText";
+import { ArrowLeft, ExternalLink, FileText, Github, Search, Code2, Filter } from "lucide-react";
 
 interface SkillDetailPageProps {
   category: SkillCategory | null;
@@ -15,6 +16,7 @@ interface SkillDetailPageProps {
 
 export default function SkillDetailPage({ category, items }: SkillDetailPageProps) {
   const [filterQuery, setFilterQuery] = useState("");
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string>("Semua");
 
   if (!category) {
     return (
@@ -35,9 +37,20 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
     );
   }
 
-  const filteredItems = items.filter(
-    (item) => item.namaFungsi.toLowerCase().includes(filterQuery.toLowerCase()) || item.catatan.toLowerCase().includes(filterQuery.toLowerCase()),
-  );
+  // Dapatkan daftar unik sub-kategori yang ada di data sheet
+  const subCategories = ["Semua", ...Array.from(new Set(items.map((i) => i.subCategory || "Umum")))];
+
+  // Filter berdasarkan kata kunci pencarian DAN tab sub-kategori yang dipilih
+  const filteredItems = items.filter((item) => {
+    const matchesSearch =
+      item.namaFungsi.toLowerCase().includes(filterQuery.toLowerCase()) ||
+      item.catatan.toLowerCase().includes(filterQuery.toLowerCase()) ||
+      (item.subCategory && item.subCategory.toLowerCase().includes(filterQuery.toLowerCase()));
+
+    const matchesSubCategory = selectedSubCategory === "Semua" || item.subCategory === selectedSubCategory;
+
+    return matchesSearch && matchesSubCategory;
+  });
 
   return (
     <>
@@ -56,7 +69,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 href="/"
                 className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Back to Home</span>
+                <span>Kembali ke Beranda</span>
               </Link>
               <div className="flex items-center gap-2 text-xs font-mono text-blue-400 bg-neutral-900 px-3 py-1 rounded-full border border-neutral-800">
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
@@ -69,7 +82,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
               <div className="space-y-2 max-w-2xl">
                 <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-black text-neutral-300 border border-neutral-800 text-[11px] font-mono">
                   <Code2 className="w-3.5 h-3.5 text-blue-400" />
-                  <span>SHEET CATEGORY</span>
+                  <span>MODUL DOKUMENTASI</span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{category.title}</h1>
                 <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">{category.description}</p>
@@ -80,13 +93,35 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500" />
                 <input
                   type="text"
-                  placeholder="Filter functions / notes..."
+                  placeholder="Cari fungsi / kata kunci..."
                   value={filterQuery}
                   onChange={(e) => setFilterQuery(e.target.value)}
-                  className="w-full bg-black border border-neutral-800 rounded-xl pl-10 pr-4 py-2 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full bg-black border border-neutral-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                 />
               </div>
             </div>
+
+            {/* TAB FILTER SUB-KATEGORI (HTML / CSS / JS, DLL) */}
+            {subCategories.length > 2 && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-neutral-500 pr-2 border-r border-neutral-800">
+                  <Filter className="w-3.5 h-3.5" />
+                  <span>Kategori:</span>
+                </div>
+                {subCategories.map((sub) => (
+                  <button
+                    key={sub}
+                    onClick={() => setSelectedSubCategory(sub)}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all border whitespace-nowrap ${
+                      selectedSubCategory === sub
+                        ? "bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-500/20 font-semibold"
+                        : "bg-neutral-900/80 text-neutral-400 border-neutral-800 hover:text-white hover:border-neutral-700"
+                    }`}>
+                    {sub}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Module Table Section */}
             <div className="space-y-4">
@@ -102,16 +137,24 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
-                      <th className="py-3.5 px-6 w-1/4">Nama Topik / Modul</th>
-                      <th className="py-3.5 px-6 w-1/2">Kesan & Evaluasi</th>
-                      <th className="py-3.5 px-6 w-1/4 text-right">Repository GitHub</th>
+                      <th className="py-3.5 px-6 w-1/5">Nama Fungsi / Modul</th>
+                      <th className="py-3.5 px-6 w-1/6">Kategori</th>
+                      <th className="py-3.5 px-6 w-2/5">Kesan & Evaluasi</th>
+                      <th className="py-3.5 px-6 w-1/5 text-right">Repository GitHub</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-neutral-800/80 text-xs text-neutral-300">
                     {filteredItems.map((item) => (
                       <tr key={item.id} className="hover:bg-neutral-900/80 transition-colors group">
                         <td className="py-4 px-6 font-bold text-white group-hover:text-blue-400 transition-colors">{item.namaFungsi}</td>
-                        <td className="py-4 px-6 text-neutral-300 leading-relaxed whitespace-pre-line">{item.catatan}</td>
+                        <td className="py-4 px-6 font-mono text-[11px]">
+                          <span className="px-2.5 py-1 rounded-md bg-black text-blue-400 border border-neutral-800">
+                            {item.subCategory || "Umum"}
+                          </span>
+                        </td>
+                        <td className="py-4 px-6 text-neutral-300 leading-relaxed">
+                          <FormattedText text={item.catatan} />
+                        </td>
                         <td className="py-4 px-6 text-right">
                           {item.linkGithub && item.linkGithub !== "#" ? (
                             <a
@@ -137,8 +180,15 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
               <div className="md:hidden space-y-3">
                 {filteredItems.map((item) => (
                   <div key={item.id} className="p-5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 space-y-3">
-                    <h3 className="font-bold text-white text-sm">{item.namaFungsi}</h3>
-                    <p className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">{item.catatan}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-bold text-white text-sm">{item.namaFungsi}</h3>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-black text-blue-400 border border-neutral-800">
+                        {item.subCategory || "Umum"}
+                      </span>
+                    </div>
+                    <div className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">
+                      <FormattedText text={item.catatan} />
+                    </div>
                     {item.linkGithub && item.linkGithub !== "#" && (
                       <a
                         href={item.linkGithub}
@@ -156,7 +206,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
 
               {filteredItems.length === 0 && (
                 <div className="text-center py-12 bg-neutral-900/40 rounded-2xl border border-neutral-800/80">
-                  <p className="text-neutral-400 text-xs sm:text-sm">Tidak ada fungsi yang ditemukan untuk "{filterQuery}".</p>
+                  <p className="text-neutral-400 text-xs sm:text-sm">Tidak ada fungsi yang ditemukan.</p>
                 </div>
               )}
             </div>

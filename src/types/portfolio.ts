@@ -4,6 +4,7 @@ export interface SkillItem {
   catatan: string;
   linkGithub: string;
   category: string;
+  subCategory?: string;
 }
 
 export interface SkillCategory {
