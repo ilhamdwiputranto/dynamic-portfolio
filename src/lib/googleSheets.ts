@@ -10,6 +10,8 @@ export const SYSTEM_SHEET_KEYWORDS = [
   "projects",
   "proyek",
   "portofolio",
+  "skills",
+  "tech_skills",
   "experience",
   "pengalaman",
   "karir",

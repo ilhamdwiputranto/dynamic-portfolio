@@ -417,7 +417,7 @@ export default function Home({
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-neutral-800/80 pb-6">
                 <div>
                   <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 03. SKILLS & MODULES</div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Skills & Documentation</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Skills Documentation</h2>
                   <p className="text-neutral-400 text-xs sm:text-sm mt-1">
                     Dokumentasi {totalSkillModules} fungsi & modul teknis terdaftar langsung dari Google Sheets.
                   </p>
