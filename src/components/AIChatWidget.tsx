@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Bot, Send, User, Sparkles, RefreshCw, MessageSquare, X, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { Bot, Send, User, Sparkles, RefreshCw, MessageSquare, X, ChevronDown } from "lucide-react";
 
 interface ChatMessage {
-  sender: 'user' | 'ai';
+  sender: "user" | "ai";
   text: string;
 }
 
@@ -10,7 +10,7 @@ const SAMPLE_QUESTIONS = [
   "Siapa Ilham Dwi Putranto?",
   "Apa saja tech skills & keahlian Ilham?",
   "Apa saja pengalaman kerja Ilham?",
-  "Lihat daftar proyek buatan Ilham"
+  "Lihat daftar proyek buatan Ilham",
 ];
 
 interface AIChatWidgetProps {
@@ -24,7 +24,7 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
   isOpen: externalIsOpen,
   onClose: externalOnClose,
   onToggle: externalOnToggle,
-  name = 'Ilham Dwi Putranto'
+  name = "Ilham Dwi Putranto",
 }) => {
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
@@ -41,40 +41,40 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      sender: 'ai',
-      text: `Halo! Saya AI Assistant pribadi ${name} (powered by Google AI Studio Gemini API). Silakan tanyakan apa saja tentang profil, latar belakang, skill, pengalaman, atau proyek ${name}!`
-    }
+      sender: "ai",
+      text: `Halo! Saya AI Assistant pribadi ${name} (powered by Google AI Studio Gemini API). Silakan tanyakan apa saja tentang profil, latar belakang, skill, pengalaman, atau proyek ${name}!`,
+    },
   ]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSend = async (questionText?: string) => {
     const query = questionText || input.trim();
     if (!query || loading) return;
 
-    const userMsg: ChatMessage = { sender: 'user', text: query };
-    setMessages(prev => [...prev, userMsg]);
-    if (!questionText) setInput('');
+    const userMsg: ChatMessage = { sender: "user", text: query };
+    setMessages((prev) => [...prev, userMsg]);
+    if (!questionText) setInput("");
     setLoading(true);
 
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: query, chatHistory: messages })
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: query, chatHistory: messages }),
       });
 
       const data = await res.json();
-      const aiReply = data.answer || data.reply || 'Maaf, gagal memproses jawaban dari AI.';
+      const aiReply = data.answer || data.reply || "Maaf, gagal memproses jawaban dari AI.";
 
-      setMessages(prev => [...prev, { sender: 'ai', text: aiReply }]);
+      setMessages((prev) => [...prev, { sender: "ai", text: aiReply }]);
     } catch (err) {
-      setMessages(prev => [
+      setMessages((prev) => [
         ...prev,
         {
-          sender: 'ai',
-          text: 'Terjadi kendala koneksi saat menghubungi AI Assistant. Pastikan `GEMINI_API_KEY` telah terpasang di `.env.local`.'
-        }
+          sender: "ai",
+          text: "Terjadi kendala koneksi saat menghubungi AI Assistant. Pastikan `GEMINI_API_KEY` telah terpasang di `.env.local`.",
+        },
       ]);
     } finally {
       setLoading(false);
@@ -87,8 +87,7 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={toggleChat}
-          className="relative group flex items-center gap-2.5 px-4 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-blue-500/30 cursor-pointer"
-        >
+          className="relative group flex items-center gap-2.5 px-4 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-white font-extrabold shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-blue-500/30 cursor-pointer">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
@@ -115,23 +114,21 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
                     Gemini AI
                   </span>
                 </div>
-                <p className="text-[11px] text-neutral-400">Bertanya seputar profiling & skill {name}</p>
+                <p className="text-[11px] text-neutral-400">Ask about {name}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-1">
               <button
-                onClick={() => setMessages([{ sender: 'ai', text: `Sesi chat di-reset. Ada yang ingin ditanyakan seputar ${name}?` }])}
+                onClick={() => setMessages([{ sender: "ai", text: `Sesi chat di-reset. Ada yang ingin ditanyakan seputar ${name}?` }])}
                 className="p-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white transition-colors"
-                title="Reset Chat"
-              >
+                title="Reset Chat">
                 <RefreshCw className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={toggleChat}
                 className="p-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-400 hover:text-white transition-colors"
-                title="Tutup Chat"
-              >
+                title="Tutup Chat">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -140,15 +137,14 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
           {/* Quick Questions */}
           <div className="p-2.5 bg-neutral-950 border-b border-neutral-800 flex items-center gap-1.5 overflow-x-auto text-xs scrollbar-none">
             <span className="text-neutral-500 text-[10px] font-semibold shrink-0 flex items-center gap-1">
-              <MessageSquare className="w-3 h-3 text-blue-400" /> Contoh:
+              <MessageSquare className="w-3 h-3 text-blue-400" /> Ask
             </span>
             {SAMPLE_QUESTIONS.map((q, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(q)}
                 disabled={loading}
-                className="shrink-0 px-2.5 py-1 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 text-[11px] transition-colors disabled:opacity-50"
-              >
+                className="shrink-0 px-2.5 py-1 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-300 text-[11px] transition-colors disabled:opacity-50">
                 {q}
               </button>
             ))}
@@ -157,20 +153,17 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
           {/* Chat Body */}
           <div className="p-4 h-72 overflow-y-auto space-y-3 bg-black/60 text-xs">
             {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`flex items-start gap-2.5 ${msg.sender === 'user' ? 'flex-row-reverse' : ''}`}
-              >
-                <div className={`p-1.5 rounded-lg shrink-0 ${msg.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                  {msg.sender === 'user' ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
+              <div key={idx} className={`flex items-start gap-2.5 ${msg.sender === "user" ? "flex-row-reverse" : ""}`}>
+                <div
+                  className={`p-1.5 rounded-lg shrink-0 ${msg.sender === "user" ? "bg-blue-600 text-white" : "bg-blue-500/10 text-blue-400 border border-blue-500/20"}`}>
+                  {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                 </div>
                 <div
                   className={`p-3 rounded-2xl max-w-[85%] text-xs leading-relaxed whitespace-pre-line ${
-                    msg.sender === 'user'
-                      ? 'bg-blue-600 text-white rounded-tr-none font-medium'
-                      : 'bg-neutral-900 border border-neutral-800 text-neutral-200 rounded-tl-none shadow-sm'
-                  }`}
-                >
+                    msg.sender === "user"
+                      ? "bg-blue-600 text-white rounded-tr-none font-medium"
+                      : "bg-neutral-900 border border-neutral-800 text-neutral-200 rounded-tl-none shadow-sm"
+                  }`}>
                   {msg.text}
                 </div>
               </div>
@@ -195,11 +188,10 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-neutral-900 border-t border-neutral-800 flex gap-2"
-          >
+            className="p-3 bg-neutral-900 border-t border-neutral-800 flex gap-2">
             <input
               type="text"
-              placeholder={`Tanya seputar ${name}...`}
+              placeholder={`Ask about ${name}...`}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={loading}
@@ -208,9 +200,8 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all disabled:opacity-50 shadow-sm"
-            >
-              <span>Kirim</span>
+              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 transition-all disabled:opacity-50 shadow-sm">
+              <span>Send</span>
               <Send className="w-3 h-3" />
             </button>
           </form>

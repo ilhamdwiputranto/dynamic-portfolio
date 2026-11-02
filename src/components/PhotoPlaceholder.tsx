@@ -8,7 +8,7 @@ interface PhotoPlaceholderProps {
 }
 
 // =========================================================================
-// SILAKAN EDIT / GANTI LINK FOTO PROFIL DI BAWAH INI UNTUK MENGUBAH SECARA HARDCODE
+// EDIT PHOTO
 // =========================================================================
 export const HARDCODED_PHOTO_URL = "https://lh3.googleusercontent.com/d/1_u8kqgMLUA7aRIvxl4z70gOqWkbyVTSB";
 

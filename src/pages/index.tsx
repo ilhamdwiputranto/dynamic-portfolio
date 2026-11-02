@@ -106,8 +106,8 @@ export default function Home({
 
                 {/* Deskripsi Khusus Web Portofolio */}
                 <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl">
-                  Welcome to my portfolio, <span className="text-white font-medium">{profile.name}</span>. This website is integrated in real-time
-                  with Google Sheets as a Headless CMS &amp; equipped with a contextual AI Assistant.
+                  Welcome to my portfolio. This website is integrated in real-time with Google Sheets as a Headless CMS &amp; equipped with a
+                  contextual AI Assistant.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono text-neutral-400 pt-1">
