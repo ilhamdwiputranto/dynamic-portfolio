@@ -18,13 +18,13 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
       <div className="min-h-screen bg-[#09090b] text-white flex flex-col justify-between">
         <Navbar />
         <div className="text-center py-20 px-6 max-w-md mx-auto space-y-4">
-          <h1 className="text-2xl font-bold">Proyek Tidak Ditemukan</h1>
-          <p className="text-neutral-400 text-sm">Proyek yang Anda cari tidak tersedia atau ID tidak valid.</p>
+          <h1 className="text-2xl font-bold">Project Not Found</h1>
+          <p className="text-neutral-400 text-sm">The project you are looking for is unavailable or the ID is invalid.</p>
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-bold hover:bg-blue-500 transition-colors">
             <ArrowLeft className="w-4 h-4" />
-            <span>Kembali ke Beranda</span>
+            <span>Back to Home</span>
           </Link>
         </div>
         <Footer />
@@ -48,7 +48,7 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
               href="/#projects"
               className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Kembali ke Portfolio</span>
+              <span>Back to Portfolio</span>
             </Link>
 
             {/* Header & Gambar Proyek */}
@@ -97,7 +97,7 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
                     rel="noreferrer"
                     className="px-5 py-2.5 rounded-xl bg-black hover:bg-neutral-800 text-neutral-200 border border-neutral-800 font-semibold text-xs flex items-center gap-2 transition-all">
                     <Github className="w-4 h-4 text-neutral-400" />
-                    <span>Repository GitHub</span>
+                    <span>GitHub Repository</span>
                     <ExternalLink className="w-3.5 h-3.5 text-neutral-500" />
                   </a>
                 )}

@@ -106,8 +106,8 @@ export default function Home({
 
                 {/* Deskripsi Khusus Web Portofolio */}
                 <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-2xl">
-                  Selamat datang di portofolio saya <span className="text-white font-medium">{profile.name}</span>. Web ini terintegrasi secara
-                  real-time dengan Google Spreadsheet sebagai Headless CMS & dilengkapi AI Assistant terkontekstual.
+                  Welcome to my portfolio, <span className="text-white font-medium">{profile.name}</span>. This website is integrated in real-time
+                  with Google Sheets as a Headless CMS &amp; equipped with a contextual AI Assistant.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono text-neutral-400 pt-1">
@@ -133,7 +133,7 @@ export default function Home({
                     rel="noreferrer"
                     className="px-5 py-2.5 rounded-xl bg-white hover:bg-neutral-200 text-neutral-950 font-bold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition-all active:scale-95">
                     <Download className="w-4 h-4" />
-                    <span>Download CV ATS</span>
+                    <span>Download ATS Resume / CV</span>
                   </a>
 
                   <button
@@ -160,9 +160,9 @@ export default function Home({
               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-neutral-800/80 pb-6">
                 <div>
                   <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 01. PROFILE SUMMARY</div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Profil & Background</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Profile & Background</h2>
                   <p className="text-neutral-400 text-xs sm:text-sm mt-1">
-                    Ringkasan kualifikasi teknis dan latar belakang profesional {profile.name}.
+                    Summary of technical qualifications and professional background of {profile.name}.
                   </p>
                 </div>
 
@@ -180,7 +180,7 @@ export default function Home({
                 <div className="lg:col-span-2 p-6 sm:p-8 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 shadow-xl space-y-6">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
                     <Terminal className="w-5 h-5 text-blue-400" />
-                    <span>Tentang {profile.name}</span>
+                    <span>About {profile.name}</span>
                   </h3>
 
                   {/* Summary Profil Asli Terhubung Langsung dari Google Sheets */}
@@ -193,7 +193,7 @@ export default function Home({
                     <div className="pt-4 border-t border-neutral-800/80 space-y-3">
                       <h4 className="text-xs font-mono uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
                         <Smile className="w-4 h-4 text-blue-400" />
-                        <span>Fakta Unik & Catatan Personal</span>
+                        <span>Personal Notes</span>
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         {aboutFacts.map((fact, idx) => (
@@ -211,7 +211,7 @@ export default function Home({
                 <div className="p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 shadow-xl space-y-6">
                   <div className="space-y-1">
                     <h4 className="font-bold text-white text-base">Quick Contact</h4>
-                    <p className="text-xs text-neutral-400">Siap berkontribusi untuk proyek/tim Anda</p>
+                    <p className="text-xs text-neutral-400">Ready to contribute to your team and projects</p>
                   </div>
 
                   <div className="space-y-2.5 text-xs text-neutral-300">
@@ -283,7 +283,7 @@ export default function Home({
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// CORE COMPETENCIES</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Stack & Key Skills</h2>
                 <p className="text-neutral-400 text-xs sm:text-sm mt-1">
-                  Teknologi dan instrumen pengembangan utama yang terhubung langsung dari Google Sheets.
+                  TeknCore technologies and development instruments connected directly from Google Sheets.
                 </p>
               </div>
 
@@ -322,7 +322,7 @@ export default function Home({
                 <div>
                   <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 02. SELECTED WORKS</div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Project Showcase</h2>
-                  <p className="text-neutral-400 text-xs sm:text-sm mt-1">Daftar karya & sistem yang dibangun oleh {profile.name}.</p>
+                  <p className="text-neutral-400 text-xs sm:text-sm mt-1">Featured projects and systems built by {profile.name}.</p>
                 </div>
                 <span className="text-xs text-neutral-500 font-mono">{projects.length} Projects Listed</span>
               </div>
@@ -403,7 +403,7 @@ export default function Home({
                   <Link
                     href="/projects"
                     className="px-6 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md group">
-                    <span>Lihat Semua Proyek ({projects.length})</span>
+                    <span>View All Projects ({projects.length})</span>
                     <ArrowRight className="w-4 h-4 text-blue-400 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -419,7 +419,7 @@ export default function Home({
                   <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 03. SKILLS & MODULES</div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Skills Documentation</h2>
                   <p className="text-neutral-400 text-xs sm:text-sm mt-1">
-                    Dokumentasi {totalSkillModules} fungsi & modul teknis terdaftar langsung dari Google Sheets.
+                    Documentation of {totalSkillModules} technical functions & modules synced directly from Google Sheets.
                   </p>
                 </div>
 
@@ -451,11 +451,11 @@ export default function Home({
                         <div className="flex items-center gap-3">
                           <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors">{category.title}</h3>
                           <span className="px-2 py-0.5 rounded-full bg-black text-blue-400 border border-neutral-800 text-[10px] font-mono">
-                            {category.itemCount} Modul
+                            {category.itemCount} Modules
                           </span>
                         </div>
                         <p className="text-xs text-neutral-400 leading-relaxed max-w-2xl whitespace-pre-line">
-                          {category.description || `Dokumentasi fungsi & praktik untuk ${category.title}`}
+                          {category.description || `Function & practice documentation for ${category.title}`}
                         </p>
                       </div>
                     </div>
@@ -476,7 +476,7 @@ export default function Home({
               <div className="border-b border-neutral-800/80 pb-6">
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 04. EXPERIENCE</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Experiences</h2>
-                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Rekam jejak karir {profile.name}.</p>
+                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Career trajectory and work history of {profile.name}.</p>
               </div>
 
               <div className="relative border-l border-neutral-800 ml-4 sm:ml-6 space-y-8">
@@ -509,7 +509,7 @@ export default function Home({
               <div className="border-b border-neutral-800/80 pb-6">
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 05. EDUCATION</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Education</h2>
-                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Pendidikan formal dan kualifikasi akademis {profile.name}.</p>
+                <p className="text-neutral-400 text-xs sm:text-sm mt-1">PendFormal education and academic qualifications of {profile.name}.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -536,7 +536,7 @@ export default function Home({
               <div className="border-b border-neutral-800/80 pb-6">
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 06. TESTIMONIALS</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Recommendations & Feedback</h2>
-                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Kesan dan ulasan nyata dari rekan dan mitra kerja.</p>
+                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Genuine feedback and recommendations from colleagues and partners.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -573,9 +573,9 @@ export default function Home({
                   <Bot className="w-3.5 h-3.5 text-blue-400" />
                   <span>INTERACTIVE AI ASSISTANT</span>
                 </div>
-                <h3 className="text-lg font-bold text-white">Ingin Bertanya Lebih Lanjut?</h3>
+                <h3 className="text-lg font-bold text-white">Want to Know More?</h3>
                 <p className="text-xs text-neutral-400">
-                  Gunakan AI Assistant terintegrasi untuk mengajukan pertanyaan seputar latar belakang & keahlian {profile.name}.
+                  Use the integrated AI Assistant to ask questions about the background &amp; skills of {profile.name}.
                 </p>
               </div>
 
@@ -584,7 +584,7 @@ export default function Home({
                 onClick={() => setIsChatOpen(true)}
                 className="shrink-0 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-2 transition-all cursor-pointer shadow-sm">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Buka AI Chat</span>
+                <span>Open AI Chat</span>
               </button>
             </div>
           </section>

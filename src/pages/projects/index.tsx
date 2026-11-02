@@ -26,7 +26,7 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
   return (
     <>
       <Head>
-        <title>Galeri Proyek & Portfolio — Selected Works</title>
+        <title>Project Gallery & Portfolio — Selected Works</title>
       </Head>
 
       <div className="min-h-screen flex flex-col bg-[#09090b] text-neutral-100 bg-grid-pattern selection:bg-neutral-800 selection:text-white font-sans">
@@ -40,7 +40,7 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
                 href="/"
                 className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Kembali ke Beranda</span>
+                <span>Back to Home</span>
               </Link>
               <div className="text-xs font-mono text-blue-400 bg-neutral-900 px-3 py-1 rounded-full border border-neutral-800">
                 <span>{projects.length} Total Projects</span>
@@ -54,9 +54,9 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
                   <FolderGit2 className="w-3.5 h-3.5 text-blue-400" />
                   <span>PROJECT GALLERY</span>
                 </div>
-                <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Semua Proyek & Portofolio</h1>
+                <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">All Projects & Portfolio</h1>
                 <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                  Kumpulan seluruh sistem, aplikasi web, dan proyek yang terhubung secara terstruktur dari Google Sheets CMS.
+                  A collection of all systems, web applications, and projects structured and connected directly from Google Sheets CMS.
                 </p>
               </div>
 
@@ -143,8 +143,8 @@ export default function ProjectsGallery({ projects }: ProjectsGalleryProps) {
 
             {filteredProjects.length === 0 && (
               <div className="text-center py-16 bg-neutral-900/40 rounded-2xl border border-neutral-800/80 space-y-2">
-                <p className="text-white font-semibold text-sm">Proyek tidak ditemukan</p>
-                <p className="text-neutral-400 text-xs">Tidak ada proyek yang cocok dengan kata kunci "{searchTerm}".</p>
+                <p className="text-white font-semibold text-sm">Project Not Found</p>
+                <p className="text-neutral-400 text-xs">No projects match your search keywords "{searchTerm}".</p>
               </div>
             )}
           </div>

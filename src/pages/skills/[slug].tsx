@@ -23,13 +23,13 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
       <div className="min-h-screen bg-[#09090b] text-white flex flex-col justify-between">
         <Navbar />
         <div className="text-center py-20 px-6 max-w-md mx-auto space-y-4">
-          <h1 className="text-3xl font-bold text-white">Kategori Tidak Ditemukan</h1>
-          <p className="text-neutral-400 text-sm">Sheet atau kategori yang Anda cari tidak tersedia di spreadsheet.</p>
+          <h1 className="text-3xl font-bold text-white">Category Not Found</h1>
+          <p className="text-neutral-400 text-sm">The sheet or category you are looking for is not available in the spreadsheet.</p>
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors text-sm">
             <ArrowLeft className="w-4 h-4" />
-            <span>Kembali ke Beranda</span>
+            <span>Back to Home</span>
           </Link>
         </div>
         <Footer />
@@ -128,7 +128,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
               <div className="flex justify-between items-center px-1">
                 <h2 className="text-base font-bold text-white flex items-center gap-2">
                   <FileText className="w-4 h-4 text-blue-400" />
-                  <span>Daftar Modul & Praktik ({filteredItems.length})</span>
+                  <span>List of Modules & Practices ({filteredItems.length})</span>
                 </h2>
               </div>
 
@@ -137,10 +137,10 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
-                      <th className="py-3.5 px-6 w-1/5">Nama Fungsi / Modul</th>
-                      <th className="py-3.5 px-6 w-1/6">Kategori</th>
-                      <th className="py-3.5 px-6 w-2/5">Kesan & Evaluasi</th>
-                      <th className="py-3.5 px-6 w-1/5 text-right">Repository GitHub</th>
+                      <th className="py-3.5 px-6 w-1/5">Function / Module Name</th>
+                      <th className="py-3.5 px-6 w-1/6">Category</th>
+                      <th className="py-3.5 px-6 w-2/5">Notes & Evaluation</th>
+                      <th className="py-3.5 px-6 w-1/5 text-right">GitHub Repository</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-neutral-800/80 text-xs text-neutral-300">
@@ -196,7 +196,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 text-xs font-medium text-blue-400 pt-1">
                         <Github className="w-4 h-4" />
-                        <span>Lihat Kode di GitHub</span>
+                        <span>View Code on GitHub</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
@@ -206,7 +206,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
 
               {filteredItems.length === 0 && (
                 <div className="text-center py-12 bg-neutral-900/40 rounded-2xl border border-neutral-800/80">
-                  <p className="text-neutral-400 text-xs sm:text-sm">Tidak ada fungsi yang ditemukan.</p>
+                  <p className="text-neutral-400 text-xs sm:text-sm">No functions found matching.</p>
                 </div>
               )}
             </div>

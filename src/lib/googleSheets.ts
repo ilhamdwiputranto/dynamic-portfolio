@@ -163,7 +163,7 @@ export async function getAllCategories(): Promise<SkillCategory[]> {
         title: sheet.title,
         slug: slugify(sheet.title),
         itemCount: rows.length,
-        description: `Kumpulan ${rows.length} fungsi & praktik pada kategori ${sheet.title}`,
+        description: `Collection of ${rows.length} functions & practices in ${sheet.title}`,
       });
     }
     return categories;
@@ -241,7 +241,7 @@ export async function getCategoryData(slug: string): Promise<{ category: SkillCa
       title: targetSheet.title,
       slug: slugify(targetSheet.title),
       itemCount: items.length,
-      description: `Dokumentasi praktik fungsi & modul untuk ${targetSheet.title}`,
+      description: `Documentation of function practices & modules for ${targetSheet.title}`,
     };
 
     return { category, items };
@@ -257,7 +257,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
     name: "Ilham Dwi Putranto",
     title: "Full-Stack Web Developer",
     summary:
-      "Pengembang web yang berfokus pada pembangunan aplikasi modern menggunakan Next.js, React, TypeScript, serta otomatisasi workflow terintegrasi Google Cloud APIs. Berkomitmen pada transparansi rekam jejak teknis melalui dokumentasi terstruktur.",
+      "Web developer focused on building modern applications using Next.js, React, TypeScript, and workflow automation integrated with Google Cloud APIs. Committed to technical track record transparency through structured documentation.",
     email: "ilhamdwiputranto09@gmail.com",
     location: "Indonesia",
     cvUrl: "https://docs.google.com",
@@ -321,17 +321,17 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
   const defaultEducations: EducationItem[] = [
     {
       id: "1",
-      degree: "Sarjana Informatika",
-      institution: "Perguruan Tinggi",
+      degree: "Bachelor of Informatics",
+      institution: "Universitas Amikom Yogyakarta",
       year: "2019 - 2023",
-      description: "Fokus pada Rekayasa Perangkat Lunak, Struktur Data, Pemrograman Web, dan Basis Data.",
+      description: "Coursework: Software Engineering, Database Systems, Web Development, Algorithms & Data Structures, Game Logic Design.",
     },
   ];
   const defaultAboutFacts: string[] = [
-    "Saya menyukai dunia otomasi & rekayasa web.",
-    "Senang bereksperimen dengan arsitektur Headless CMS berbasis Google Cloud APIs & Next.js 14.",
-    "Hobi mencatat setiap modul & sintaks pemrograman baru langsung ke dalam Google Spreadsheet.",
-    "Suka menikmati kopi sambil melakukan refactoring kode agar lebih bersih dan terstruktur.",
+    "Passionate about web engineering & workflow automation.",
+    "Enthusiastic about Headless CMS architecture with Google Cloud APIs &amp; Next.js 14.",
+    "Habit of documenting every new module & programming syntax directly into Google Sheets.",
+    "Enjoying coffee while refactoring code for cleaner, maintainable structure.",
   ];
   const defaultTestimonials: TestimonialItem[] = [
     {
@@ -493,7 +493,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
             id: String(idx + 1),
             role: getVal(["title", "Jabatan", "role", "Role", "Posisi"]) || "Developer",
             company: getVal(["Perusahaan", "company", "Company", "Instansi"]) || "Perusahaan",
-            period: getVal(["waktu", "Periode", "period", "Tahun"]) || "2023 - Sekarang",
+            period: getVal(["waktu", "Periode", "period", "Tahun"]) || "2023 - Present",
             description: getVal(["Deskripsi", "description", "Tugas", "Keterangan"]) || "-",
             location: getVal(["Lokasi", "location", "Kota"]) || "Indonesia",
           };
@@ -517,7 +517,7 @@ export async function getFullPortfolioData(): Promise<PortfolioFullData> {
 
           return {
             id: String(idx + 1),
-            degree: getVal(["Gelar", "degree", "Jurusan", "Program"]) || "Sarjana Komputer",
+            degree: getVal(["Gelar", "degree", "Jurusan", "Program"]) || "Bachelor of Informatics",
             institution: getVal(["Institusi", "institution", "Universitas", "Sekolah"]) || "Perguruan Tinggi",
             year: getVal(["tahun", "Tahun", "Year", "Periode"]) || "2019 - 2023",
             description: getVal(["Deskripsi", "description", "Keterangan", "IPK"]) || "",
