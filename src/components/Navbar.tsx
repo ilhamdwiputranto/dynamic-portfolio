@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
 
           <Link href="/#skills" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <Code2 className="w-3.5 h-3.5 text-blue-400" />
-            <span>Tech Documentation</span>
+            <span>Skill Documentation</span>
           </Link>
 
           <Link href="/#experience" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             Project Showcase
           </Link>
           <Link href="/#skills" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Tech Documentation
+            Skill Documentation
           </Link>
           <Link href="/#experience" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Work Experience

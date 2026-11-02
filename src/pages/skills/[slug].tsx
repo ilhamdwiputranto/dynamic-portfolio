@@ -139,6 +139,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
                       <th className="py-3.5 px-6 w-1/5">Function / Module Name</th>
                       <th className="py-3.5 px-6 w-1/6">Status</th>
+                      <th className="py-3.5 px-6 w-1/4">Material</th>
                       <th className="py-3.5 px-6 w-2/5">Notes & Evaluation</th>
                       <th className="py-3.5 px-6 w-1/5 text-right">GitHub Repository</th>
                     </tr>
@@ -152,6 +153,21 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                             {item.subCategory || "In Progress"}
                           </span>
                         </td>
+
+                        <td className="py-4 px-6 text-neutral-300 leading-relaxed font-mono text-xs">
+                          {item.material && item.material !== "-" ? (
+                            <div className="flex flex-wrap gap-1">
+                              {item.material.split(/[,|]/).map((mat, i) => (
+                                <span key={i} className="px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 border border-neutral-800 text-[11px]">
+                                  {mat.trim()}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-neutral-500 italic">-</span>
+                          )}
+                        </td>
+
                         <td className="py-4 px-6 text-neutral-300 leading-relaxed whitespace-pre-line">
                           <FormattedText text={item.catatan} />
                         </td>
@@ -186,6 +202,18 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                         {item.subCategory || "In Progress"}
                       </span>
                     </div>
+
+                    {item.material && item.material !== "-" && (
+                      <div className="flex flex-wrap items-center gap-1 text-[11px] font-mono">
+                        <span className="text-neutral-400 text-xs mr-1">Material:</span>
+                        {item.material.split(/[,|]/).map((mat, i) => (
+                          <span key={i} className="px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 border border-neutral-800">
+                            {mat.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">
                       <FormattedText text={item.catatan} />
                     </div>

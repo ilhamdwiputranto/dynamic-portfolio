@@ -3,6 +3,7 @@ export interface SkillItem {
   namaFungsi: string;
   catatan: string;
   linkGithub: string;
+  material?: string;
   category: string;
   subCategory?: string;
 }

@@ -217,7 +217,7 @@ export async function getCategoryData(slug: string): Promise<{ category: SkillCa
       const catatanAuto = findVal(["kesan", "catatan", "note", "evaluasi", "deskripsi"]);
       const linkAuto = findVal(["link_github", "link github", "github", "repo", "link", "url"]);
       const subCategoryAuto = findVal(["subkategori", "sub_kategori", "kategori", "category", "tag", "group", "jenis"]);
-
+      const materialAuto = findVal(["material", "link_material", "link material", "bahan", "docs", "referensi"]);
       if (namaFungsiAuto) {
         namaFungsi = namaFungsiAuto;
       }
@@ -232,8 +232,9 @@ export async function getCategoryData(slug: string): Promise<{ category: SkillCa
         namaFungsi: String(namaFungsi),
         catatan: String(catatan),
         linkGithub: String(linkGithub),
+        material: String(material),
         category: targetSheet.title,
-        subCategory: subCategoryAuto || "Umum",
+        subCategory: subCategoryAuto || "In Progress",
       };
     });
 
