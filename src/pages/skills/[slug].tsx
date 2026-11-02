@@ -138,7 +138,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                   <thead>
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
                       <th className="py-3.5 px-6 w-1/5">Function / Module Name</th>
-                      <th className="py-3.5 px-6 w-1/6">Status</th>
+                      <th className="py-3.5 px-6 w-1/8">Status</th>
                       <th className="py-3.5 px-6 w-1/4">Material</th>
                       <th className="py-3.5 px-6 w-2/5">Notes & Evaluation</th>
                       <th className="py-3.5 px-6 w-1/5 text-right">GitHub Repository</th>
@@ -179,7 +179,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                               rel="noreferrer"
                               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black border border-neutral-800 hover:border-neutral-700 text-neutral-200 text-xs font-medium transition-all">
                               <Github className="w-3.5 h-3.5" />
-                              <span>View Code</span>
+                              <span>View</span>
                               <ExternalLink className="w-3 h-3 text-neutral-500" />
                             </a>
                           ) : (
@@ -224,7 +224,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 text-xs font-medium text-blue-400 pt-1">
                         <Github className="w-4 h-4" />
-                        <span>View Code on GitHub</span>
+                        <span>View</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
