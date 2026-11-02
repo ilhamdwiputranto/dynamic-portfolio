@@ -226,6 +226,7 @@ export async function getCategoryData(slug: string): Promise<{ category: SkillCa
       }
       let linkGithub =
         linkAuto || row.get("link_github") || row.get("Link Github Praktik") || row.get("Link GitHub") || row.get("Link Github") || "#";
+      let material = materialAuto || row.get("Material") || row.get("link_material") || "";
 
       return {
         id: String(index + 1),
