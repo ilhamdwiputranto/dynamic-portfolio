@@ -51,12 +51,6 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             <Mail className="w-3.5 h-3.5 text-blue-400" />
             <span>Contact</span>
           </Link>
-          <Link
-            href="/#ai-assistant"
-            className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1 text-blue-400 font-bold bg-blue-500/10 px-2.5 py-1 rounded-full border border-blue-500/20">
-            <Bot className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
-            <span>Ask AI</span>
-          </Link>
 
           {/* ATS CV Download Button */}
           <a
@@ -97,18 +91,16 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
           <Link href="/#projects" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Project Showcase
           </Link>
+          <Link href="/#skills" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
+            Tech Documentation
+          </Link>
           <Link href="/#experience" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Work Experience
           </Link>
           <Link href="/#education" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Education
           </Link>
-          <Link href="/#skills" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Tech Skills
-          </Link>
-          <Link href="/#ai-assistant" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg bg-blue-500/10 text-blue-400 font-bold">
-            Ask AI
-          </Link>
+
           <Link href="/#contact" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Leave a Message
           </Link>
