@@ -38,7 +38,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
   }
 
   // Dapatkan daftar unik sub-kategori yang ada di data sheet
-  const subCategories = ["Semua", ...Array.from(new Set(items.map((i) => i.subCategory || "Umum")))];
+  const subCategories = ["All", ...Array.from(new Set(items.map((i) => i.subCategory || "In Progress")))];
 
   // Filter berdasarkan kata kunci pencarian DAN tab sub-kategori yang dipilih
   const filteredItems = items.filter((item) => {
@@ -69,7 +69,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 href="/"
                 className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Kembali ke Beranda</span>
+                <span>Back to Home</span>
               </Link>
               <div className="flex items-center gap-2 text-xs font-mono text-blue-400 bg-neutral-900 px-3 py-1 rounded-full border border-neutral-800">
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
@@ -93,7 +93,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                 <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500" />
                 <input
                   type="text"
-                  placeholder="Cari fungsi / kata kunci..."
+                  placeholder="Find module / keyword..."
                   value={filterQuery}
                   onChange={(e) => setFilterQuery(e.target.value)}
                   className="w-full bg-black border border-neutral-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
@@ -106,7 +106,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
               <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
                 <div className="flex items-center gap-1.5 text-xs font-mono text-neutral-500 pr-2 border-r border-neutral-800">
                   <Filter className="w-3.5 h-3.5" />
-                  <span>Kategori:</span>
+                  <span>Category:</span>
                 </div>
                 {subCategories.map((sub) => (
                   <button
@@ -138,7 +138,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                   <thead>
                     <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider">
                       <th className="py-3.5 px-6 w-1/5">Function / Module Name</th>
-                      <th className="py-3.5 px-6 w-1/6">Category</th>
+                      <th className="py-3.5 px-6 w-1/6">Status</th>
                       <th className="py-3.5 px-6 w-2/5">Notes & Evaluation</th>
                       <th className="py-3.5 px-6 w-1/5 text-right">GitHub Repository</th>
                     </tr>
@@ -149,10 +149,10 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                         <td className="py-4 px-6 font-bold text-white group-hover:text-blue-400 transition-colors">{item.namaFungsi}</td>
                         <td className="py-4 px-6 font-mono text-[11px]">
                           <span className="px-2.5 py-1 rounded-md bg-black text-blue-400 border border-neutral-800">
-                            {item.subCategory || "Umum"}
+                            {item.subCategory || "In Progress"}
                           </span>
                         </td>
-                        <td className="py-4 px-6 text-neutral-300 leading-relaxed">
+                        <td className="py-4 px-6 text-neutral-300 leading-relaxed whitespace-pre-line">
                           <FormattedText text={item.catatan} />
                         </td>
                         <td className="py-4 px-6 text-right">
@@ -183,7 +183,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-bold text-white text-sm">{item.namaFungsi}</h3>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-black text-blue-400 border border-neutral-800">
-                        {item.subCategory || "Umum"}
+                        {item.subCategory || "In Progress"}
                       </span>
                     </div>
                     <div className="text-xs text-neutral-300 leading-relaxed bg-black p-3 rounded-xl border border-neutral-800">
