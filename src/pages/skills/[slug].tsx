@@ -136,7 +136,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
               <div className="hidden md:block overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-900/40 shadow-xl">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] font-mono uppercase tracking-wider text-center">
+                    <tr className="bg-neutral-900 border-b border-neutral-800 text-neutral-400 text-[11px] table-fixed font-mono uppercase tracking-wider text-center">
                       <th className="py-3.5 px-6 w-1/5">Function / Module Name</th>
                       <th className="py-3.5 px-6 w-1/8">Status</th>
                       <th className="py-3.5 px-6 w-1/4">Material</th>
