@@ -141,7 +141,7 @@ export default function Home({
                     onClick={() => setIsChatOpen(true)}
                     className="px-5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800 font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer">
                     <Bot className="w-4 h-4 text-blue-400" />
-                    <span>Ask AI Assistant</span>
+                    <span>Ask AI</span>
                   </button>
 
                   <a
@@ -283,7 +283,7 @@ export default function Home({
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// CORE COMPETENCIES</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Tech Stack & Key Skills</h2>
                 <p className="text-neutral-400 text-xs sm:text-sm mt-1">
-                  TeknCore technologies and development instruments connected directly from Google Sheets.
+                  Core technologies and development instruments connected directly from Google Sheets.
                 </p>
               </div>
 
