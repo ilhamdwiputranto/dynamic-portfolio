@@ -16,7 +16,7 @@ interface SkillDetailPageProps {
 
 export default function SkillDetailPage({ category, items }: SkillDetailPageProps) {
   const [filterQuery, setFilterQuery] = useState("");
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string>("Semua");
+  const [selectedSubCategory, setSelectedSubCategory] = useState<string>("All");
 
   if (!category) {
     return (
@@ -47,7 +47,7 @@ export default function SkillDetailPage({ category, items }: SkillDetailPageProp
       item.catatan.toLowerCase().includes(filterQuery.toLowerCase()) ||
       (item.subCategory && item.subCategory.toLowerCase().includes(filterQuery.toLowerCase()));
 
-    const matchesSubCategory = selectedSubCategory === "Semua" || item.subCategory === selectedSubCategory;
+    const matchesSubCategory = selectedSubCategory === "All" || item.subCategory === selectedSubCategory;
 
     return matchesSearch && matchesSubCategory;
   });
