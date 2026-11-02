@@ -93,7 +93,7 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
             <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
           </span>
           <Bot className="w-5 h-5 text-blue-400" />
-          <span className="text-xs sm:text-sm font-bold tracking-wide">Tanya AI</span>
+          <span className="text-xs sm:text-sm font-bold tracking-wide">Ask AI</span>
           {isOpen ? <ChevronDown className="w-4 h-4 text-neutral-400" /> : <Sparkles className="w-4 h-4 text-blue-400 animate-pulse" />}
         </button>
       </div>
@@ -176,7 +176,7 @@ export const AIChatWidget: React.FC<AIChatWidgetProps> = ({
                 </div>
                 <div className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-400 text-[11px] flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
-                  <span>Membaca data profiling...</span>
+                  <span>Please wait...</span>
                 </div>
               </div>
             )}

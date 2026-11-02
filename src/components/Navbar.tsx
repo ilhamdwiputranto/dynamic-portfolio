@@ -32,6 +32,12 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             <FolderGit2 className="w-3.5 h-3.5 text-blue-400" />
             <span>Project</span>
           </Link>
+
+          <Link href="/#skills" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
+            <Code2 className="w-3.5 h-3.5 text-blue-400" />
+            <span>Tech Documentation</span>
+          </Link>
+
           <Link href="/#experience" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <Briefcase className="w-3.5 h-3.5 text-blue-400" />
             <span>Experience</span>
