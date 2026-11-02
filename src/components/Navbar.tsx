@@ -26,30 +26,30 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
         <div className="hidden lg:flex items-center gap-6 text-xs font-semibold text-neutral-300">
           <Link href="/#about" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <User className="w-3.5 h-3.5 text-blue-400" />
-            <span>Profil</span>
+            <span>Profile</span>
           </Link>
           <Link href="/#projects" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <FolderGit2 className="w-3.5 h-3.5 text-blue-400" />
-            <span>Proyek</span>
+            <span>Project</span>
           </Link>
           <Link href="/#experience" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <Briefcase className="w-3.5 h-3.5 text-blue-400" />
-            <span>Pengalaman</span>
+            <span>Experience</span>
           </Link>
           <Link href="/#education" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
-            <span>Pendidikan</span>
+            <span>Education</span>
           </Link>
 
           <Link href="/#contact" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1">
             <Mail className="w-3.5 h-3.5 text-blue-400" />
-            <span>Kontak</span>
+            <span>Contact</span>
           </Link>
           <Link
             href="/#ai-assistant"
             className="hover:text-blue-400 transition-colors flex items-center gap-1.5 py-1 text-blue-400 font-bold bg-blue-500/10 px-2.5 py-1 rounded-full border border-blue-500/20">
             <Bot className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
-            <span>AI Assistant</span>
+            <span>Ask AI</span>
           </Link>
 
           {/* ATS CV Download Button */}
@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-neutral-200 text-neutral-950 font-bold text-xs shadow-sm transition-all hover:scale-105 active:scale-95">
             <Download className="w-3.5 h-3.5" />
-            <span>Download CV ATS</span>
+            <span>Download ATS Resume / CV</span>
           </a>
         </div>
 
@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             rel="noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[11px]">
             <Download className="w-3 h-3" />
-            <span>CV ATS</span>
+            <span>Resume / CV</span>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -86,22 +86,22 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
       {isOpen && (
         <div className="lg:hidden mt-3 pt-3 border-t border-neutral-800/80 space-y-2 pb-2 text-sm font-medium text-neutral-300">
           <Link href="/#about" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Profil & Summary
+            Profile & Summary
           </Link>
           <Link href="/#projects" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Proyek Showcase
+            Project Showcase
           </Link>
           <Link href="/#experience" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Pengalaman Kerja
+            Work Experience
           </Link>
           <Link href="/#education" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
-            Pendidikan
+            Education
           </Link>
           <Link href="/#skills" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Tech Skills
           </Link>
           <Link href="/#ai-assistant" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg bg-blue-500/10 text-blue-400 font-bold">
-            Ask AI Assistant
+            Ask AI
           </Link>
           <Link href="/#contact" onClick={() => setIsOpen(false)} className="block py-2 px-3 rounded-lg hover:bg-neutral-900">
             Leave a Message

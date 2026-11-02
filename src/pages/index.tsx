@@ -509,7 +509,7 @@ export default function Home({
               <div className="border-b border-neutral-800/80 pb-6">
                 <div className="text-xs font-mono text-blue-400 tracking-wider uppercase mb-1">// 05. EDUCATION</div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Education</h2>
-                <p className="text-neutral-400 text-xs sm:text-sm mt-1">PendFormal education and academic qualifications of {profile.name}.</p>
+                <p className="text-neutral-400 text-xs sm:text-sm mt-1">Formal education and academic qualifications of {profile.name}.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
