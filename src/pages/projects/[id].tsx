@@ -48,7 +48,7 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
               href="/#projects"
               className="inline-flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors bg-neutral-900/80 px-3.5 py-2 rounded-xl border border-neutral-800">
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Portfolio</span>
+              <span>Back to Home</span>
             </Link>
 
             {/* Header & Gambar Proyek */}
